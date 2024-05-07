@@ -7,9 +7,9 @@ service AuthService {
   // Login is used to create a new login request
   rpc Login(LoginRequest) returns (LoginResponse);
 
-  // Auth is used to authenticate a user
-  // Auth completes the login and registration flow
-  rpc Auth(AuthRequest) returns (AuthResponse);
+  // Verification is used to authenticate a user
+  // It completes the login and registration flow
+  rpc Verify(VerifyRequest) returns (VerifyResponse);
 
   // RefreshToken is used to refresh the access token
   // last access token and refresh token are required
@@ -34,14 +34,14 @@ message LoginResponse {
   string authToken = 1;
 }
 
-// Auth
-message AuthRequest {
+// Verify
+message VerifyRequest {
   string username = 1;
   string password = 2;
   string authToken = 3;
 }
 
-message AuthResponse {
+message VerifyResponse {
   string accessToken = 1;
   string refreshToken = 2;
 }
