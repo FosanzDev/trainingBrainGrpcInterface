@@ -69,9 +69,10 @@ message RegisterResponse {
 
 // Logout
 message LogoutRequest {
-  string authToken = 1;
+  string username = 1;
+  string refreshToken = 2;
 }
 
 message LogoutResponse {
-  string message = 1;
+  bool logout = 1;
 }
