@@ -61,6 +61,7 @@ message RegisterRequest {
   string name = 1;
   string username = 2;
   string password = 3;
+  bool professional = 4;
 }
 
 message RegisterResponse {
