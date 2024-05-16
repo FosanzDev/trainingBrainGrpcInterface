@@ -8,7 +8,7 @@ import "google/protobuf/empty.proto";
 service MoodService {
   rpc AddMood (AddMoodRequest) returns (google.protobuf.Empty);
   rpc GetHistory (GetHistoryRequest) returns (GetHistoryResponse);
-  rpc GetHistoryById (GetHistoryByIdRequest) returns (GetHistoryByIdResponse);
+  rpc GetHistoryById (GetHistoryByIdRequest) returns (GetHistoryResponse);
   rpc GetMoods(google.protobuf.Empty) returns (GetMoodsResponse);
 }
 
@@ -47,10 +47,6 @@ message GetHistoryByIdRequest {
   string id = 1;
   int32 limit = 2;
   int32 offset = 3;
-}
-
-message GetHistoryByIdResponse {
-  repeated AccountMood accountMoods = 1;
 }
 
 message GetMoodsResponse {
