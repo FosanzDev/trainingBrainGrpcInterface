@@ -1,0 +1,44 @@
+syntax="proto3";
+
+option java_package = "com.fosanzdev.trainingBrainGrpcInterface.auth";
+option java_multiple_files = true;
+
+import "google/protobuf/empty.proto";
+
+service AccountService {
+  rpc Me(google.protobuf.Empty) returns (MeResponse);
+  rpc GetAccountInfo(AccountInfoRequest) returns (AccountInfoResponse);
+}
+
+message MeResponse{
+  string id = 1;
+  string name = 2;
+  string username = 3;
+  bool isProfessional = 4;
+  bool isVerified = 5;
+}
+
+message AccountInfoRequest{
+  string id = 1;
+}
+
+message AccountInfoResponse{
+  oneof result {
+    CompleteAccountInfo completeAccountInfo = 1;
+    BasicAccountInfo basicAccountInfo = 2;
+  }
+}
+
+message CompleteAccountInfo{
+  string id = 1;
+  string name = 2;
+  string username = 3;
+  bool isProfessional = 4;
+  bool isVerified = 5;
+}
+
+message BasicAccountInfo {
+  string id = 1;
+  string name = 2;
+  string username = 3;
+}
