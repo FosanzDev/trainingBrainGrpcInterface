@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+option java_package = "com.fosanzdev.trainingBrainGrpcInterface.auth";
+option java_multiple_files = true;
+
+import "google/protobuf/empty.proto";
+
+service MoodService {
+  rpc AddMood (AddMoodRequest) returns (google.protobuf.Empty);
+  rpc GetHistory (GetHistoryRequest) returns (GetHistoryResponse);
+  rpc GetHistoryById (GetHistoryByIdRequest) returns (GetHistoryByIdResponse);
+  rpc GetMoods(google.protobuf.Empty) returns (GetMoodsResponse);
+}
+
+//Class definition
+
+message Mood{
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string color = 4;
+  string icon = 5;
+}
+
+message AccountMood{
+  int64 id = 1;
+  Mood mood = 2;
+  string date = 3;
+}
+
+//Request and Response
+
+message AddMoodRequest {
+  string moodId = 1;
+}
+
+message GetHistoryRequest {
+  int32 limit = 1;
+  int32 offset = 2;
+}
+
+message GetHistoryResponse {
+  repeated AccountMood accountMoods = 1;
+}
+
+message GetHistoryByIdRequest {
+  string id = 1;
+  int32 limit = 2;
+  int32 offset = 3;
+}
+
+message GetHistoryByIdResponse {
+  repeated AccountMood accountMoods = 1;
+}
+
+message GetMoodsResponse {
+  repeated Mood moods = 1;
+}
