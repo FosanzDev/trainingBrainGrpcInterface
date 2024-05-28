@@ -8,6 +8,14 @@ import "google/protobuf/empty.proto";
 service AccountService {
   rpc Me(google.protobuf.Empty) returns (CompleteAccountInfo);
   rpc GetAccountInfo(AccountInfoRequest) returns (AccountInfoResponse);
+  rpc UpdateAccountInfo(UpdateAccountRequest) returns (google.protobuf.Empty);
+}
+
+message UpdateAccountRequest{
+  string name = 1;
+  string username = 2;
+  string email = 3;
+  string password = 4;
 }
 
 message AccountInfoRequest{
