@@ -19,7 +19,7 @@ message ProDataList {
 }
 
 message SkillIdList {
-  repeated int32 skillId = 1;
+  repeated int64 skillId = 1;
 }
 
 message SubFilters {
@@ -29,7 +29,7 @@ message SubFilters {
 }
 
 message ByWorkTitle {
-  int32 workTitle = 1;
+  int64 workTitle = 1;
   optional Pagination paginaton = 2;
   optional SubFilters subFilters = 3;
 }
