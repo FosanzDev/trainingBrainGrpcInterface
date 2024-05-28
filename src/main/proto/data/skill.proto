@@ -19,7 +19,7 @@ message DeleteSkillRequest {
 
 message SkillRequest {
   int64 id = 1;
-  string level = 2;
+  int32 level = 2;
 }
 
 message Skill {
