@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option java_package = "com.fosanzdev.trainingBrainGrpcInterface.appointments";
+option java_multiple_files = true;
+
+import "google/protobuf/empty.proto";
+
+service AppointmentService {
+  rpc RequestAppointment(AppointmentRequest) returns (google.protobuf.Empty);
+  rpc RetrieveAppointments(AppointmentRequestByStatus) returns (AppointmentList);
+  rpc AcceptAppointment(AppointmentId) returns (google.protobuf.Empty);
+  rpc GetAppointment(AppointmentId) returns (AppointmentResponse);
+  rpc CancelAppointment(AppointmentId) returns (google.protobuf.Empty);
+  rpc CompleteAppointment(DiagnosisObject) returns (google.protobuf.Empty);
+}
+
+message CompleteAppointmentRequest {
+  string appointmentId = 1;
+  string confirmationNotes = 2;
+}
+
+message AppointmentId {
+  string appointmentId = 1;
+}
+
+message AppointmentRequestByStatus {
+  string status = 1;
+}
+
+message AppointmentRequest {
+  string professionalId = 1;
+  string startDateTime = 2;
+  string endDateTime = 3;
+  string submissionNotes = 4;
+}
+
+message DiagnosisObject {
+  string header = 1;
+  string shortDescription = 2;
+  string description = 3;
+  string recommendation = 4;
+  string treatment = 5;
+}
+
+message AppointmentList {
+  repeated AppointmentResponse appointments = 1;
+}
+
+message AppointmentResponse {
+  string appointmentId = 1;
+  string startDateTime = 2;
+  string endDateTime = 3;
+  optional string submissionNotes = 4;
+  optional string cancellationNotes = 5;
+  optional string confirmationNotes = 6;
+  string professionalId = 7;
+  string userId = 8;
+  string status = 9;
+  optional DiagnosisObject diagnosis = 10;
+}
