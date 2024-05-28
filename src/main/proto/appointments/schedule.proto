@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option java_package = "com.fosanzdev.trainingBrainGrpcInterface.appointments";
+option java_multiple_files = true;
+
+import "google/protobuf/empty.proto";
+
+service ScheduleService {
+  rpc ModifySchedule(Schedule) returns (google.protobuf.Empty);
+  rpc GetScheduleById(ScheduleByIdRequest) returns (Schedule);
+}
+
+message ScheduleByIdRequest {
+  string professionalId = 1;
+}
+
+message Range {
+  string startHour = 1;
+  string endHour = 2;
+}
+
+message Day {
+  string day = 1;
+  repeated Range range = 2;
+}
+
+//Could be done with a repeated
+// but this way is more readable
+message Schedule {
+  string professionalId = 1;
+  Day monday = 2;
+  Day tuesday = 3;
+  Day wednesday = 4;
+  Day thursday = 5;
+  Day friday = 6;
+  Day saturday = 7;
+  Day sunday = 8;
+  int32 intervalMinutes = 9;
+}
