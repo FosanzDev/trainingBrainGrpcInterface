@@ -7,12 +7,12 @@ import "google/protobuf/empty.proto";
 import "auth/account.proto";
 
 service PostsService {
-  rpc addPost(AddPostRequest) returns (google.protobuf.Empty);
-  rpc updatepost(UpdatePostRequest) returns (google.protobuf.Empty);
-  rpc getPost(GetPostRequest) returns (PostResponse);
-  rpc getPostsFromAccount(AccountId) returns (PostListResponse);
-  rpc getRecentPosts(Pagination) returns (PostListResponse);
-  rpc deletePost(GetPostRequest) returns (google.protobuf.Empty);
+  rpc AddPost(AddPostRequest) returns (google.protobuf.Empty);
+  rpc UpdatePost(UpdatePostRequest) returns (google.protobuf.Empty);
+  rpc GetPost(GetPostRequest) returns (PostResponse);
+  rpc GetPostsFromAccount(AccountId) returns (PostListResponse);
+  rpc GetRecentPosts(Pagination) returns (PostListResponse);
+  rpc DeletePost(GetPostRequest) returns (google.protobuf.Empty);
 }
 
 message Pagination {
