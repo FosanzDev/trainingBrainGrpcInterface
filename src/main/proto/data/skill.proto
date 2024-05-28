@@ -33,7 +33,7 @@ message ProfessionalSkill{
   int64 id = 1;
   string name = 2;
   string description = 3;
-  string level = 4;
+  int32 level = 4;
 }
 
 message SkillList {
