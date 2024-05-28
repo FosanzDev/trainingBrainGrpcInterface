@@ -7,10 +7,13 @@ import "google/protobuf/empty.proto";
 
 service UserDataService {
   rpc GetMyData(google.protobuf.Empty) returns (PrivateUserDataResponse);
-  rpc GetUserDataById(google.protobuf.Empty) returns (UserDataResponse);
+  rpc GetUserDataById(GetUserDataByIdRequest) returns (UserDataResponse);
   rpc UpdateUserData(UpdateUserDataRequest) returns (google.protobuf.Empty);
 }
 
+message GetUserDataByIdRequest {
+  string id = 1;
+}
 
 message UpdateUserDataRequest {
   string publicBio = 1;
