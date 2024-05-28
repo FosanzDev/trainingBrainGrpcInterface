@@ -24,16 +24,8 @@ message Day {
   repeated Range range = 2;
 }
 
-//Could be done with a repeated
-// but this way is more readable
 message Schedule {
   string professionalId = 1;
-  Day monday = 2;
-  Day tuesday = 3;
-  Day wednesday = 4;
-  Day thursday = 5;
-  Day friday = 6;
-  Day saturday = 7;
-  Day sunday = 8;
-  int32 intervalMinutes = 9;
+  repeated Day schedule = 2;
+  int32 intervalMinutes = 3;
 }
