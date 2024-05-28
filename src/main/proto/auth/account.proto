@@ -6,16 +6,8 @@ option java_multiple_files = true;
 import "google/protobuf/empty.proto";
 
 service AccountService {
-  rpc Me(google.protobuf.Empty) returns (MeResponse);
+  rpc Me(google.protobuf.Empty) returns (CompleteAccountInfo);
   rpc GetAccountInfo(AccountInfoRequest) returns (AccountInfoResponse);
-}
-
-message MeResponse{
-  string id = 1;
-  string name = 2;
-  string username = 3;
-  bool isProfessional = 4;
-  bool isVerified = 5;
 }
 
 message AccountInfoRequest{
@@ -33,9 +25,10 @@ message CompleteAccountInfo{
   string id = 1;
   string name = 2;
   string username = 3;
-  bool isProfessional = 4;
-  bool isVerified = 5;
-  string relatedId = 6;
+  string email = 4;
+  bool isProfessional = 5;
+  bool isVerified = 6;
+  string relatedId = 7;
 }
 
 message BasicAccountInfo {
