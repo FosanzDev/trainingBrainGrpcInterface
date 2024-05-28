@@ -35,7 +35,7 @@ message GoalResponse {
   int32 hoursBetween = 5;
   int32 repetitions = 6;
   string startDateTime = 7;
-  string pendingToday = 8;
+  optional bool pendingToday = 8;
 }
 
 message GoalList {
