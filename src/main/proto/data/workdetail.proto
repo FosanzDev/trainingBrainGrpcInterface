@@ -27,9 +27,5 @@ message AddWorkDetailRequest {
 
 message ModifyWorkDetailRequest {
   int64 workDetailId = 1;
-  int64 workTitleId = 2;
-  string company = 3;
-  string startDate = 4;
-  string endDate = 5;
-  string description = 6;
+  AddWorkDetailRequest workDetail = 2;
 }
