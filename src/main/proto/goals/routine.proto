@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option java_package = "com.fosanzdev.trainingBrainGrpcInterface.goals";
+option java_multiple_files = true;
+
+import "google/protobuf/empty.proto";
+
+service RoutineService {
+  rpc AddRoutine(AddRoutineRequest) returns (google.protobuf.Empty);
+  rpc GetTodayRoutineList(google.protobuf.Empty) returns (RoutineList);
+  rpc GetRoutineList(google.protobuf.Empty) returns (RoutineList);
+  rpc GetRoutineById(RoutineByIdRequest) returns (RoutineResponse);
+  rpc DeleteRoutine(RoutineByIdRequest) returns (google.protobuf.Empty);
+}
+
+message RoutineByIdRequest {
+  string routineId = 1;
+}
+
+message AddRoutineRequest {
+  string title = 1;
+  string description = 2;
+  int32 every = 3;
+  string routineType = 4;
+  string startDateTime = 5;
+  string endDateTime = 6;
+}
+
+message RoutineList {
+  repeated RoutineResponse routines = 1;
+}
+
+message RoutineResponse {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  int32 every = 4;
+  string routineType = 5;
+  string startDateTime = 6;
+  string endDateTime = 7;
+  string submissionDate = 8;
+}
