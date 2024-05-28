@@ -35,10 +35,13 @@ message CompleteAccountInfo{
   string username = 3;
   bool isProfessional = 4;
   bool isVerified = 5;
+  string relatedId = 6;
 }
 
 message BasicAccountInfo {
   string id = 1;
   string name = 2;
   string username = 3;
+  bool isProfessional = 4;
+  string relatedId = 5;
 }
