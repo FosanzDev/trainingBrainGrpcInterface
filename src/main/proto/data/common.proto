@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option java_package = "com.fosanzdev.trainingBrainGrpcInterface.data";
+option java_multiple_files = true;
+
+message WorkTitle {
+  int64 id = 1;
+  string name = 2;
+  Branch branch = 3;
+}
+
+message Branch {
+  int64 id = 1;
+  string name = 2;
+}
+
+message BranchListResponse {
+  repeated Branch branchList = 1;
+}
+
+message WorkTitleListResponse {
+  repeated WorkTitle workTitleList = 1;
+}
+
+message WorkDetail {
+  int64 id = 1;
+  WorkTitle workTitle = 2;
+  string company = 3;
+  string startDate = 4;
+  string endDate = 5;
+  string description = 6;
+}
+
+message WorkDetailList {
+  repeated WorkDetail workDetails = 1;
+}

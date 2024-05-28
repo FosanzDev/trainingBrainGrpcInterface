@@ -4,7 +4,7 @@ option java_package = "com.fosanzdev.trainingBrainGrpcInterface.data";
 option java_multiple_files = true;
 
 import "google/protobuf/empty.proto";
-import "data/prodata.proto";
+import "data/common.proto";
 
 service WorkDetailService {
   rpc GetMyWorkDetails(google.protobuf.Empty) returns (WorkDetailList);
@@ -32,17 +32,4 @@ message ModifyWorkDetailRequest {
   string startDate = 4;
   string endDate = 5;
   string description = 6;
-}
-
-message WorkDetail {
-  int64 id = 1;
-  WorkTitle workTitle = 2;
-  string company = 3;
-  string startDate = 4;
-  string endDate = 5;
-  string description = 6;
-}
-
-message WorkDetailList {
-  repeated WorkDetail workDetails = 1;
 }

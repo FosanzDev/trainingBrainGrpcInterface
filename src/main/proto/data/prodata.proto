@@ -4,7 +4,7 @@ option java_package = "com.fosanzdev.trainingBrainGrpcInterface.data";
 option java_multiple_files = true;
 
 import "google/protobuf/empty.proto";
-import "data/workdetail.proto";
+import "data/common.proto";
 import "data/skill.proto";
 
 service ProDataService {
@@ -33,25 +33,6 @@ message ProDataResponse {
   WorkTitle workTitle = 4;
   WorkDetailList workDetails = 5;
   ProfessionalSkillList professionalSkills = 6;
-}
-
-message Branch {
-  int64 id = 1;
-  string name = 2;
-}
-
-message BranchListResponse {
-  repeated Branch branchList = 1;
-}
-
-message WorkTitle {
-  int64 id = 1;
-  string name = 2;
-  Branch branch = 3;
-}
-
-message WorkTitleListResponse {
-  repeated WorkTitle workTitleList = 1;
 }
 
 message GetWorkTitleByBranchRequest {
