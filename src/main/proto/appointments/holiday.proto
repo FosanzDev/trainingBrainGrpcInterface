@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option java_package = "com.fosanzdev.trainingBrainGrpcInterface.appointments";
+option java_multiple_files = true;
+
+import "google/protobuf/empty.proto";
+
+service HolidayService {
+  rpc AddHoliday(NewHolidayRequest) returns (google.protobuf.Empty);
+  rpc RemoveHoliday(RemoveHolidayRequest) returns (google.protobuf.Empty);
+  rpc GetMyHolidays(google.protobuf.Empty) returns (HolidayListResponse);
+  rpc GetHolidayById(GetHolidayByIdRequest) returns (HolidayResponse);
+}
+
+message GetHolidayByIdRequest {
+  string id = 1;
+}
+
+message RemoveHolidayRequest {
+  string id = 1;
+}
+
+message HolidayResponse {
+  optional string id = 1;
+  string holidayType = 2;
+  string description = 3;
+  string startDateTime = 4;
+  string endDateTime = 5;
+}
+
+message HolidayListResponse {
+  repeated HolidayResponse holidays = 1;
+}
+
+message NewHolidayRequest {
+  string holidayType = 1;
+  string description = 2;
+  string startDateTime = 3;
+  string endDateTime = 4;
+}
