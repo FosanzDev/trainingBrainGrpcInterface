@@ -7,8 +7,8 @@ import "google/protobuf/empty.proto";
 import "auth/account.proto";
 
 service PostsService {
-  rpc addPost(AddPostRequest) returns (PostResponse);
-  rpc updatepost(UpdatePostRequest) returns (PostResponse);
+  rpc addPost(AddPostRequest) returns (google.protobuf.Empty);
+  rpc updatepost(UpdatePostRequest) returns (google.protobuf.Empty);
   rpc getPost(GetPostRequest) returns (PostResponse);
   rpc getPostsFromAccount(AccountId) returns (PostListResponse);
   rpc getRecentPosts(Pagination) returns (PostListResponse);
