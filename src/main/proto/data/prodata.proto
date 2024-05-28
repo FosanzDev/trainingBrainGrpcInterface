@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+option java_package = "com.fosanzdev.trainingBrainGrpcInterface.data";
+option java_multiple_files = true;
+
+import "google/protobuf/empty.proto";
+import "data/workdetail.proto";
+import "data/skill.proto";
+
+service ProDataService {
+  rpc GetBranchList(google.protobuf.Empty) returns (BranchListResponse);
+  rpc GetWorkTitleList(google.protobuf.Empty) returns (WorkTitleListResponse);
+  rpc GetWorkTitleByBranch(GetWorkTitleByBranchRequest) returns (WorkTitleListResponse);
+  rpc SetWorkTitle(SetWorkTitleRequest) returns (google.protobuf.Empty);
+
+  rpc GetMyData(google.protobuf.Empty) returns (ProDataResponse);
+  rpc SetMyData(SetMyDataRequest) returns (google.protobuf.Empty);
+  rpc GetDataById(GetDataByIdRequest) returns (ProDataResponse);
+}
+
+message SetMyDataRequest{
+  string publicBio  = 1;
+}
+
+message GetDataByIdRequest {
+  string id = 1;
+}
+
+message ProDataResponse {
+  string id = 1;
+  string name = 2;
+  string publicBio = 3;
+  WorkTitle workTitle = 4;
+  WorkDetailList workDetails = 5;
+  ProfessionalSkillList professionalSkills = 6;
+}
+
+message Branch {
+  int64 id = 1;
+  string name = 2;
+}
+
+message BranchListResponse {
+  repeated Branch branchList = 1;
+}
+
+message WorkTitle {
+  int64 id = 1;
+  string name = 2;
+  Branch branch = 3;
+}
+
+message WorkTitleListResponse {
+  repeated WorkTitle workTitleList = 1;
+}
+
+message GetWorkTitleByBranchRequest {
+  int64 branchId = 1;
+}
+
+message SetWorkTitleRequest {
+  int64 worktTitleId = 1;
+}

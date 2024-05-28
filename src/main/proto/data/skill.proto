@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+option java_package = "com.fosanzdev.trainingBrainGrpcInterface.data";
+option java_multiple_files = true;
+
+import "google/protobuf/empty.proto";
+
+service SkillService {
+  rpc GetAllSkills (google.protobuf.Empty) returns (SkillList);
+  rpc GetMySkills (google.protobuf.Empty) returns (ProfessionalSkillList);
+  rpc AddSkill (SkillRequest) returns (google.protobuf.Empty);
+  rpc ModifySkill (SkillRequest) returns (google.protobuf.Empty);
+  rpc DeleteSkill (DeleteSkillRequest) returns (google.protobuf.Empty);
+}
+
+message DeleteSkillRequest {
+  int64 id = 1;
+}
+
+message SkillRequest {
+  string name = 1;
+  string description = 2;
+  string level = 3;
+}
+
+message Skill {
+  int64 id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message ProfessionalSkill{
+  int64 id = 1;
+  string name = 2;
+  string description = 3;
+  string level = 4;
+}
+
+message SkillList {
+  repeated Skill skills = 1;
+}
+
+message ProfessionalSkillList {
+  repeated ProfessionalSkill professionalSkills = 1;
+}

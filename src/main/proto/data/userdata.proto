@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option java_package = "com.fosanzdev.trainingBrainGrpcInterface.data";
+option java_multiple_files = true;
+
+import "google/protobuf/empty.proto";
+
+service UserDataService {
+  rpc GetMyData(google.protobuf.Empty) returns (PrivateUserDataResponse);
+  rpc GetUserDataById(google.protobuf.Empty) returns (UserDataResponse);
+  rpc UpdateUserData(UpdateUserDataRequest) returns (google.protobuf.Empty);
+}
+
+
+message UpdateUserDataRequest {
+  string publicBio = 1;
+  string privateBio = 2;
+  string history = 3;
+  string dateOfBirth = 4;
+}
+
+message PublicUserDataResponse {
+  string id = 1;
+  string publicBio = 2;
+  string dateOfBirth = 3;
+}
+
+message UserDataResponse{
+  oneof data {
+    PublicUserDataResponse publicData = 1;
+    PrivateUserDataResponse privateData = 2;
+  }
+}
+
+message PrivateUserDataResponse {
+  string id = 1;
+  string publicBio = 2;
+  string privateBio = 3;
+  string history = 4;
+  string dateOfBirth = 5;
+}
