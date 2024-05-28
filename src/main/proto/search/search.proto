@@ -35,7 +35,7 @@ message ByWorkTitle {
 }
 
 message ByBranch {
-  int32 branch = 1;
+  int64 branch = 1;
   optional Pagination pagination = 2;
   optional SubFilters subFilters = 3;
 }
