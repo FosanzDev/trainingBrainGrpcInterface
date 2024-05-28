@@ -21,6 +21,7 @@ message CompleteAppointmentRequest {
 
 message AppointmentId {
   string appointmentId = 1;
+  optional string comment = 2;
 }
 
 message AppointmentRequestByStatus {
