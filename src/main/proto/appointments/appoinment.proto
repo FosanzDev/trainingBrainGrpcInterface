@@ -16,7 +16,6 @@ service AppointmentService {
 
 message CompleteRequest {
   string appointmentId = 1;
-  string comment = 2;
   DiagnosisObject diagnosis = 3;
 }
 
