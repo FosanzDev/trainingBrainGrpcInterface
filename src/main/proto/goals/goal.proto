@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option java_package = "com.fosanzdev.trainingBrainGrpcInterface.goals";
+option java_multiple_files = true;
+
+import "google/protobuf/empty.proto";
+
+service GoalsService {
+  rpc AddGoal(AddGoalRequest) returns (google.protobuf.Empty);
+  rpc MarkAsDone(GoalByIdRequest) returns (google.protobuf.Empty);
+  rpc GetTodayGoals(google.protobuf.Empty) returns (GoalList);
+  rpc GetGoalById(GoalByIdRequest) returns (GoalResponse);
+  rpc GetGoals(google.protobuf.Empty) returns (GoalList);
+  rpc DeleteGoal(GoalByIdRequest) returns (google.protobuf.Empty);
+}
+
+
+message GoalByIdRequest {
+  string goalId = 1;
+}
+
+message AddGoalRequest {
+  string title = 1;
+  string description = 2;
+  int32 hoursBetween = 3;
+  int32 repetitions = 4;
+  string startDateTime = 5;
+}
+
+message GoalResponse {
+  string goalId = 1;
+  string title = 2;
+  string description = 3;
+  bool completed = 4;
+  int32 hoursBetween = 5;
+  int32 repetitions = 6;
+  string startDateTime = 7;
+  string pendingToday = 8;
+}
+
+message GoalList {
+  repeated GoalResponse goals = 1;
+}
