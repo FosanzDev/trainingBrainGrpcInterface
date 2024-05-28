@@ -11,7 +11,12 @@ service AppointmentService {
   rpc AcceptAppointment(AppointmentId) returns (google.protobuf.Empty);
   rpc GetAppointment(AppointmentId) returns (AppointmentResponse);
   rpc CancelAppointment(AppointmentId) returns (google.protobuf.Empty);
-  rpc CompleteAppointment(DiagnosisObject) returns (google.protobuf.Empty);
+  rpc CompleteAppointment(CompleteRequest) returns (google.protobuf.Empty);
+}
+
+message CompleteRequest {
+  string appointmentId = 1;
+  DiagnosisObject diagnosis = 2;
 }
 
 message CompleteAppointmentRequest {
