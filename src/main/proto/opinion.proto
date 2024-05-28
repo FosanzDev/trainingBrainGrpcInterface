@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option java_package = "com.fosanzdev.trainingBrainGrpcInterface.data";
+option java_multiple_files = true;
+
+import "google/protobuf/empty.proto";
+
+service OpinionService {
+  rpc CreateOpinion(CreateOpinionRequest) returns (google.protobuf.Empty);
+  rpc DeleteOpinion(DeleteOpinionRequest) returns (google.protobuf.Empty);
+  rpc GetMyOpinions(google.protobuf.Empty) returns (OpinionList);
+  rpc GetProfessionalOpinions(GetProfessionalOpinionsRequest) returns (OpinionList);
+}
+
+message CreateOpinionRequest {
+  string profesionalId = 1;
+  string title = 2;
+  string content = 3;
+  int32 rating = 4;
+}
+
+message DeleteOpinionRequest {
+  string id = 1;
+}
+
+message GetProfessionalOpinionsRequest {
+  string profesionalId = 1;
+}
+
+message OpinionList {
+  repeated OpinionResponse opinions = 1;
+}
+
+message OpinionResponse {
+  string id = 1;
+  string title = 2;
+  string content = 3;
+  int32 rating = 4;
+}
