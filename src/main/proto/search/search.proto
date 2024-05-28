@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+option java_package = "com.fosanzdev.trainingBrainGrpcInterface.posts";
+option java_multiple_files = true;
+
+import "google/protobuf/empty.proto";
+import "data/prodata.proto";
+import "data/common.proto";
+
+service SearchService {
+  rpc SearchByWorkTitle(ByWorkTitle) returns (ProDataList);
+  rpc SearchByBranch(ByBranch) returns (ProDataList);
+  rpc SearchAll(google.protobuf.Empty) returns (ProDataList);
+}
+
+message ProDataList {
+  repeated ProDataResponse professional = 1;
+}
+
+message Pageable {
+  int32 pageNumber = 1;
+  int32 pageSize = 2;
+}
+
+message SkillIdList {
+  repeated int32 skillId = 1;
+}
+
+message SubFilters {
+  optional string name = 1;
+  optional SkillIdList hasSkills = 2;
+  optional int32 rating = 3;
+}
+
+message ByWorkTitle {
+  int32 workTitle = 1;
+  optional Pageable pageable = 2;
+  optional SubFilters subFilters = 3;
+}
+
+message ByBranch {
+  int32 branch = 1;
+  optional Pageable pageable = 2;
+  optional SubFilters subFilters = 3;
+}
